@@ -7,8 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+        <p>Hit me {add(1, 2)} times!
         </p>
         <a
           className="App-link"
@@ -21,6 +20,10 @@ function App() {
       </header>
     </div>
   );
+}
+
+function add(a: number, b: number): number {
+    return a + b;
 }
 
 export default App;
