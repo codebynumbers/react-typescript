@@ -1,13 +1,15 @@
 import React from 'react';
 
 type changeHandlerFunction = (event: React.ChangeEvent<HTMLInputElement>) => void;
-type AddendProps = { name: string, value: string, handleChange: changeHandlerFunction };
 
-export default class Addend extends React.Component<AddendProps> {
+type AddendProps = {
+    name: string,
+    value: string,
+    handleChange: changeHandlerFunction
+};
 
-    render() {
-        return (
-             <input name={this.props.name} type="text" value={this.props.value} onChange={this.props.handleChange}/>
-        );
-    }
+export default function Addend(props: AddendProps) {
+    return (
+         <input name={props.name} type="text" value={props.value} onChange={props.handleChange}/>
+    );
 }

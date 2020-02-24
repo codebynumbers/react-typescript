@@ -1,33 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Addend from './Addend'
 
-type AppState = { a: string, b: string };
+export default function App() {
+    const [a, setA] = useState('')
+    const [b, setB] = useState('')
 
-export default class App extends React.Component<{}, AppState> {
-    constructor(props: object) {
-        super(props);
-        this.state = {
-            a: '',
-            b: ''
-        };
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>){
+        if (event.target.name == 'a') {
+            setA(event.target.value)
+        } else {
+            setB(event.target.value)
+        }
     }
 
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // @ts-ignore
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    render() {
-        return(
-            <div className="App">
-                <header className="App-header">
-                    <Addend name='a' value={this.state.a} handleChange={this.handleChange} /> +
-                    <Addend name='b' value={this.state.b} handleChange={this.handleChange} /> = {tryAdd(this.state.a, this.state.b)}
-                </header>
-            </div>
-            );
-    }
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Addend name='a' value={a} handleChange={handleChange} /> +
+                <Addend name='b' value={b} handleChange={handleChange} /> = {tryAdd(a, b)}
+            </header>
+        </div>
+    );
 }
 
 function tryAdd(a: string, b: string): string {
